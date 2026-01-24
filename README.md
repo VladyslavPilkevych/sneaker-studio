@@ -1,4 +1,4 @@
-# Sneaker Studio 👟
+# Sneaker Studio
 
 A premium 3D sneaker customization experience built with React, Three.js (R3F), and Tailwind CSS.
 
