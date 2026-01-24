@@ -6,6 +6,7 @@ import { Seo } from "../components/Seo";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Footer } from "@/components/footer/footer";
 import { FeatureSection } from "@/components/feature-section/feature-section";
+import { ScrollModelStory } from "@/components/ScrollModelStory";
 
 export function HomePage() {
   const currentIndex = useCarouselStore((state) => state.currentIndex);
@@ -30,7 +31,7 @@ export function HomePage() {
         description="Experience high-fidelity textures. Customize the legacy with our 3D studio tools."
       />
 
-      <div className="relative z-10 flex min-h-screen flex-col font-display text-text-main radial-gradient-bg">
+      <div className="relative z-10 flex flex-col font-display text-text-main radial-gradient-bg">
         <main className="flex-grow flex flex-col items-center justify-center w-full px-6 md:px-12 lg:px-24 py-8 md:py-12">
           <HeroCarousel
             models={SNEAKER_MODELS}
@@ -40,11 +41,14 @@ export function HomePage() {
             onStart={(id) => navigate(`/model/${id}`)}
           />
         </main>
+      </div>
 
         <FeatureSection />
 
+        <ScrollModelStory url="/assets/models/nike_air_force_1.glb" />
+
+        <FeatureSection />
         <Footer />
-      </div>
     </>
   );
 }

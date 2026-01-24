@@ -83,21 +83,21 @@
     position: relative;
     background:
       radial-gradient(
-        700px 380px at 50% 42%,
+        700px 380px at 50% 85%,
         rgba(230, 230, 230, 0.95) 0%,
         rgba(204, 204, 204, 0.35) 30%,
         rgba(245, 247, 251, 0) 72%
       ),
-      /* radial-gradient(
+      radial-gradient(
         1200px 900px at 50% 58%,
         rgba(48, 48, 48, 0.1) 0%,
         rgba(22, 22, 22, 0) 62%
       ),
       radial-gradient(
-        900px 650px at 50% 115%,
+        900px 650px at 50% 95%,
         rgba(16, 16, 16, 0.1) 0%,
         rgba(0, 0, 0, 0) 55%
-      ), */
+      ),
       linear-gradient(180deg, #232323 0%, #494949 40%, #3c3c3c 100%);
   }
 
