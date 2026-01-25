@@ -28,7 +28,7 @@ export function ModelViewer({ url }: { url: string }) {
       <OrbitControls
         enablePan={false}
         enableZoom
-        minDistance={2.5}
+        minDistance={1.5}
         maxDistance={5.5}
         autoRotate={!hovered}
         autoRotateSpeed={-4}

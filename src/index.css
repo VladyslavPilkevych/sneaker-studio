@@ -217,6 +217,7 @@
   .heroSlideGrid {
     width: 100%;
     max-width: 1400px;
+    min-height: 520px;
     margin: 0 auto;
     padding: 0 24px;
     display: grid;
@@ -224,6 +225,7 @@
     gap: 32px;
     align-items: center;
     overflow: visible;
+    position: relative;
   }
 
   @media (max-width: 1024px) {
@@ -263,20 +265,30 @@
     justify-content: center;
   } */
 
-  .heroSlideCenter {
+  /* .heroSlideCenter {
     position: relative;
     z-index: 20;
     overflow: visible;
+  } */
+  .heroSlideCenter {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
   }
 
-  .heroShoeWrap {
-    position: relative;
-    width: 520px;
-    height: 520px;
-    max-width: none;
-    margin-left: -90px;
-    margin-right: -90px;
-  }
+.heroShoeWrap {
+  position: absolute;
+  /* top: 0; */
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 520px;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
 
   .heroShoeImg {
     width: 360px;
@@ -287,17 +299,32 @@
   }
 
   .heroShoeShadow {
-    position: absolute;
+    /* position: absolute;
+    bottom: 110px;
+    width: 260px;
+    height: 46px; */
+
+    /* position: absolute;
+    left: 50%;
     bottom: 110px;
     width: 260px;
     height: 46px;
+    transform: translateX(-50%); */
+
+  position: absolute;
+  left: 50%;
+  bottom: 110px;
+  width: 260px;
+  height: 46px;
+  transform: translateX(-50%);
+  
     background: radial-gradient(
       closest-side,
       rgba(0, 0, 0, 0.28),
       rgba(0, 0, 0, 0)
     );
     filter: blur(7px);
-    transform: scale(1);
+    /* transform: scale(1); */
     animation: heroShadow 3.6s ease-in-out infinite;
   }
 
@@ -336,5 +363,75 @@
       transform: translateY(0px) scale(1);
       opacity: 1;
     }
+  }
+
+  .heroStage {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+    min-height: 520px;
+  }
+
+  .heroSlide {
+    position: absolute;
+    inset: 0;
+    will-change: transform, opacity, filter;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .heroSlideCurrent {
+    z-index: 2;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .heroSlidePrev {
+    z-index: 1;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .heroSlideCurrentPrep.dirNext {
+    transform: translate3d(26%, 0, 0) scale(0.96);
+    opacity: 0;
+    filter: blur(8px);
+  }
+
+  .heroSlideCurrentPrep.dirPrev {
+    transform: translate3d(-26%, 0, 0) scale(0.96);
+    opacity: 0;
+    filter: blur(8px);
+  }
+
+  .heroSlideCurrentAnim {
+    transition:
+      transform 720ms cubic-bezier(0.16, 1.1, 0.3, 1),
+      opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+
+  .heroSlidePrevAnim.dirNext {
+    transition:
+      transform 720ms cubic-bezier(0.16, 1.1, 0.3, 1),
+      opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate3d(-26%, 0, 0) scale(0.96);
+    opacity: 0;
+    filter: blur(8px);
+  }
+
+  .heroSlidePrevAnim.dirPrev {
+    transition:
+      transform 720ms cubic-bezier(0.16, 1.1, 0.3, 1),
+      opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate3d(26%, 0, 0) scale(0.96);
+    opacity: 0;
+    filter: blur(8px);
   }
 }
