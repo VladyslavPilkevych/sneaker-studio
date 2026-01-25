@@ -1,10 +1,35 @@
-import { Suspense, useState } from "react";
+import { Suspense, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import * as THREE from "three";
 
-function Shoe({ url }: { url: string }) {
+function CenteredModel({ url }: { url: string }) {
   const { scene } = useGLTF(url);
-  return <primitive object={scene} />;
+  const groupRef = useRef<THREE.Group>(null);
+
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
+
+  useLayoutEffect(() => {
+    if (!groupRef.current) return;
+
+    const box = new THREE.Box3().setFromObject(groupRef.current);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+
+    groupRef.current.position.sub(center);
+
+    const maxAxis = Math.max(size.x, size.y, size.z);
+    if (maxAxis > 0) {
+      const scale = 2 / maxAxis;
+      groupRef.current.scale.setScalar(scale);
+    }
+  }, [url]);
+
+  return (
+    <group ref={groupRef}>
+      <primitive object={clonedScene} />
+    </group>
+  );
 }
 
 export function ModelViewer({ url }: { url: string }) {
@@ -21,7 +46,7 @@ export function ModelViewer({ url }: { url: string }) {
       <directionalLight position={[3, 5, 4]} intensity={1} />
 
       <Suspense fallback={null}>
-        <Shoe url={url} />
+        <CenteredModel url={url} />
         <Environment preset="city" />
       </Suspense>
 
@@ -34,6 +59,7 @@ export function ModelViewer({ url }: { url: string }) {
         autoRotateSpeed={-4}
         enableDamping
         dampingFactor={0.08}
+        target={[0, 0, 0]}
       />
     </Canvas>
   );
