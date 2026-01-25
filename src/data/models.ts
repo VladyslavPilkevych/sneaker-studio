@@ -25,12 +25,12 @@ export const SNEAKER_MODELS: SneakerModel[] = [
   },
   {
     id: "sneaker-002",
-    name: "Classic Court High",
+    name: "Black Sneakers",
     description:
       "Vintage vibes with a high-top silhouette. Perfect for casual wear or the skate park.",
     tags: ["classic", "high-top", "skate"],
-    glbUrl: "/models/classic-court.glb",
-    imgUrl: "/assets/images/classic-court.png",
+    glbUrl: "/assets/models/black_sneakers.glb",
+    imgUrl: "/assets/images/black_sneakers.png",
     defaultConfig: {
       laces: "#cccccc",
       sole: "#ffffff",
@@ -43,7 +43,7 @@ export const SNEAKER_MODELS: SneakerModel[] = [
     description:
       "Bold design meets rugged durability. Ready for any adventure, from city streets to mountain trails.",
     tags: ["hiking", "outdoor", "futuristic"],
-    glbUrl: "/models/future-trekker.glb",
+    glbUrl: "/assets/models/future-trekker.glb",
     imgUrl: "/assets/images/future-trekker.png",
     defaultConfig: {
       laces: "#ffff00",
