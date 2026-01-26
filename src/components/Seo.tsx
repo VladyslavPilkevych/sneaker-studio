@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 interface SeoProps {
   title: string;
@@ -8,35 +8,53 @@ interface SeoProps {
   type?: string;
 }
 
+function setMeta(name: string, content: string, property = false) {
+  const selector = property
+    ? `meta[property="${name}"]`
+    : `meta[name="${name}"]`;
+
+  let meta = document.querySelector(selector);
+
+  if (!meta) {
+    meta = document.createElement("meta");
+    if (property) {
+      meta.setAttribute("property", name);
+    } else {
+      meta.setAttribute("name", name);
+    }
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute("content", content);
+}
+
 export function Seo({
   title,
   description,
-  image = "/og-image.jpg", // Make sure to add a default OG image later
+  image = "/og-image.jpg",
   url = window.location.href,
   type = "website",
 }: SeoProps) {
-  const siteTitle = "Sneaker Studio";
-  const fullTitle = `${title} | ${siteTitle}`;
+  useEffect(() => {
+    const siteTitle = "Sneaker Studio";
+    const fullTitle = `${title} | ${siteTitle}`;
 
-  return (
-    <Helmet>
-      {/* Basic */}
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
+    document.title = fullTitle;
 
-      {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:url" content={url} />
-      <meta property="og:type" content={type} />
-      <meta property="og:site_name" content={siteTitle} />
+    setMeta("description", description);
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-    </Helmet>
-  );
+    setMeta("og:title", fullTitle, true);
+    setMeta("og:description", description, true);
+    setMeta("og:image", image, true);
+    setMeta("og:url", url, true);
+    setMeta("og:type", type, true);
+    setMeta("og:site_name", siteTitle, true);
+
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", fullTitle);
+    setMeta("twitter:description", description);
+    setMeta("twitter:image", image);
+  }, [title, description, image, url, type]);
+
+  return null;
 }
