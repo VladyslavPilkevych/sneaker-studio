@@ -8,13 +8,13 @@ export default {
     theme: {
         extend: {
             colors: {
-                "primary": "#135bec",
+                "primary": "#0f0fbd",
                 "primary-dark": "#0e45b8",
-                "background-light": "#f8f9fb",
-                "background-dark": "#101622",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101022",
                 "surface-light": "#ffffff",
-                "text-main": "#111827",
-                "text-muted": "#6b7280",
+                "text-main": "#0d0d1b",
+                "text-muted": "#4c4c9a",
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
@@ -57,7 +57,7 @@ export default {
                 }
             },
             fontFamily: {
-                "display": ["Manrope", "sans-serif"],
+                "display": ["Work Sans", "Manrope", "sans-serif"],
                 "body": ["Noto Sans", "sans-serif"],
             },
             borderRadius: {

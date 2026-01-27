@@ -1,32 +1,46 @@
+import { Link, NavLink } from "react-router-dom";
+
 export function Header() {
   return (
     <header className="w-full px-6 py-6 md:px-12 lg:px-24 flex items-center justify-between">
-      <div className="flex items-center gap-3">
+      <Link to="/" className="flex items-center gap-3">
         <div className="text-primary">
           <span className="material-symbols-outlined text-[24px]">
             Sneaked Studio
           </span>
         </div>
-      </div>
+      </Link>
       <nav className="hidden md:flex items-center gap-10">
-        <a
-          href="#"
-          className="text-text-main text-sm font-semibold hover:text-primary transition-colors"
+        <NavLink
+          to="/collections"
+          className={({ isActive }) =>
+            `text-sm font-semibold hover:text-primary transition-colors ${
+              isActive ? "text-primary" : "text-text-main"
+            }`
+          }
         >
           Collections
-        </a>
-        <a
-          href="#"
-          className="text-text-main text-sm font-semibold hover:text-primary transition-colors"
+        </NavLink>
+        <NavLink
+          to="/studio"
+          className={({ isActive }) =>
+            `text-sm font-semibold hover:text-primary transition-colors ${
+              isActive ? "text-primary" : "text-text-main"
+            }`
+          }
         >
           Studio
-        </a>
-        <a
-          href="#"
-          className="text-text-main text-sm font-semibold hover:text-primary transition-colors"
+        </NavLink>
+        <NavLink
+          to="/community"
+          className={({ isActive }) =>
+            `text-sm font-semibold hover:text-primary transition-colors ${
+              isActive ? "text-primary" : "text-text-main"
+            }`
+          }
         >
           Community
-        </a>
+        </NavLink>
       </nav>
       <div className="flex items-center gap-4">
         <button className="hidden md:flex size-10 items-center justify-center rounded-full hover:bg-gray-100 transition-colors">

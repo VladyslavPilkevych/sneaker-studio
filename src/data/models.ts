@@ -10,20 +10,6 @@ export interface SneakerModel {
 
 export const SNEAKER_MODELS: SneakerModel[] = [
   {
-    id: "sneaker-001",
-    name: "Urban Runner X",
-    description:
-      "A sleek, modern runner designed for the concrete jungle. Features breathable mesh and responsive cushioning.",
-    tags: ["running", "urban", "modern"],
-    glbUrl: "/assets/models/urban-runner.glb",
-    imgUrl: "/assets/images/urban-runner.png",
-    defaultConfig: {
-      laces: "#ffffff",
-      sole: "#000000",
-      body: "#ff5500",
-    },
-  },
-  {
     id: "sneaker-002",
     name: "Black Sneakers",
     description:
@@ -38,6 +24,20 @@ export const SNEAKER_MODELS: SneakerModel[] = [
     },
   },
   {
+    id: "sneaker-001",
+    name: "Urban Runner X",
+    description:
+      "A sleek, modern runner designed for the concrete jungle. Features breathable mesh and responsive cushioning.",
+    tags: ["running", "urban", "modern"],
+    glbUrl: "/assets/models/urban-runner.glb",
+    imgUrl: "/assets/images/urban-runner.png",
+    defaultConfig: {
+      laces: "#ffffff",
+      sole: "#000000",
+      body: "#ff5500",
+    },
+  },
+  {
     id: "sneaker-003",
     name: "Future Trekker",
     description:
@@ -45,6 +45,20 @@ export const SNEAKER_MODELS: SneakerModel[] = [
     tags: ["hiking", "outdoor", "futuristic"],
     glbUrl: "/assets/models/future-trekker.glb",
     imgUrl: "/assets/images/future-trekker.png",
+    defaultConfig: {
+      laces: "#ffff00",
+      sole: "#222222",
+      body: "#4444ff",
+    },
+  },
+  {
+    id: "sneaker-004",
+    name: "TEST",
+    description:
+      "TEST DESCRIPTION",
+    tags: ["TEST 1", "TEST 2"],
+    glbUrl: "/models/classic-court.glb",
+    imgUrl: "/assets/images/classic-court.png",
     defaultConfig: {
       laces: "#ffff00",
       sole: "#222222",
