@@ -4,7 +4,6 @@ import { useCarouselStore } from "../store/carousel-store";
 import { SNEAKER_MODELS } from "../data/models";
 import { Seo } from "../components/Seo";
 import { HeroCarousel } from "@/components/HeroCarousel";
-import { Footer } from "@/components/footer/footer";
 import { FeatureSection } from "@/components/feature-section/feature-section";
 import { ScrollModelStory } from "@/components/ScrollModelStory";
 
@@ -38,17 +37,16 @@ export function HomePage() {
             activeIndex={currentIndex}
             onNext={nextModel}
             onPrev={prevModel}
-            onStart={(id) => navigate(`/model/${id}`)}
+            onStart={(id) => navigate(`/product/${id}`)}
           />
         </main>
       </div>
 
-        <FeatureSection />
+      <FeatureSection />
 
-        <ScrollModelStory url="/assets/models/nike_air_force_1.glb" />
+      <ScrollModelStory url="/assets/models/nike_air_force_1.glb" />
 
-        <FeatureSection />
-        <Footer />
+      <FeatureSection />
     </>
   );
 }

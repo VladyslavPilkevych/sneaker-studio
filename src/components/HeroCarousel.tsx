@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { SneakerModel } from "../data/models";
+import type { Sneaker } from "../data/models";
 import { ModelViewer } from "./ModelViewer";
 import { useCarouselStore } from "@/store/carousel-store";
 
 type HeroCarouselProps = {
-  models: SneakerModel[];
+  models: Sneaker[];
   activeIndex: number;
   onNext: () => void;
   onPrev: () => void;
@@ -13,7 +13,7 @@ type HeroCarouselProps = {
 
 type SlideState = {
   key: string;
-  model: SneakerModel;
+  model: Sneaker;
   index: number;
 };
 
@@ -131,7 +131,7 @@ function SlideContent({
   onPrev,
   onStart,
 }: {
-  model: SneakerModel;
+  model: Sneaker;
   onNext: () => void;
   onPrev: () => void;
   onStart: (modelId: string) => void;
@@ -140,9 +140,17 @@ function SlideContent({
     <div className="heroSlideGrid">
       <div className="glass-panel rounded-2xl p-6 shadow-glass heroSlideLeft">
         <div className="flex flex-col gap-2">
-          <span className="text-primary font-bold tracking-widest uppercase text-xs">
-            New Arrival
-          </span>
+          {model.badges && model.badges.length > 0 && (
+            <span
+              className={`font-bold tracking-widest uppercase text-xs ${
+                model.badges[0].variant === "primary"
+                  ? "text-primary"
+                  : "text-text-muted"
+              }`}
+            >
+              {model.badges[0].text}
+            </span>
+          )}
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter leading-[0.9] text-text-main uppercase break-words">
             {model.name.split(" ").map((word, i) => (
@@ -183,7 +191,7 @@ function SlideContent({
       <div className="heroSlideCenter">
         <div className="heroShoeWrap">
           <div className="heroShoeShadow" />
-          <ModelViewer key={model.id} url={model.glbUrl} />
+          <ModelViewer key={model.id} url={model.glb || ""} />
         </div>
       </div>
 
@@ -193,10 +201,12 @@ function SlideContent({
             <div>
               <h3 className="text-lg font-bold text-text-main">{model.name}</h3>
               <p className="text-sm text-text-muted font-medium">
-                Original Collection
+                {model.silhouette}
               </p>
             </div>
-            <span className="text-lg font-bold text-text-main">$170.00</span>
+            <span className="text-lg font-bold text-text-main">
+              ${model.price}.00
+            </span>
           </div>
 
           <div className="flex flex-wrap gap-2">

@@ -54,7 +54,7 @@ export function SneakerPage() {
   useEffect(() => {
     if (currentModel) {
       const configParam = searchParams.get("config");
-      let initialConfig = currentModel.defaultConfig;
+      let initialConfig = currentModel.defaultConfig || {};
 
       if (configParam) {
         try {
@@ -83,7 +83,7 @@ export function SneakerPage() {
 
   const handleReset = () => {
     if (currentModel) {
-      resetColors(currentModel.defaultConfig);
+      resetColors(currentModel.defaultConfig || {});
     }
   };
 
@@ -96,7 +96,7 @@ export function SneakerPage() {
   }
 
   return (
-    <div className="h-[calc(100vh-4rem)] flex flex-col md:flex-row">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row">
       <Seo
         title={`Customize ${currentModel.name}`}
         description={`Customize your own ${currentModel.name}. Choose colors, materials and make it yours.`}
@@ -104,7 +104,7 @@ export function SneakerPage() {
       <div className="flex-1 bg-muted/20 flex items-center justify-center relative min-h-[50vh] md:min-h-auto border-b md:border-b-0">
         <CanvasErrorBoundary>
           <Suspense fallback={<Loader />}>
-            <CustomizerScene modelUrl={currentModel.glbUrl} />
+            <CustomizerScene modelUrl={currentModel.glb || ""} />
           </Suspense>
         </CanvasErrorBoundary>
       </div>

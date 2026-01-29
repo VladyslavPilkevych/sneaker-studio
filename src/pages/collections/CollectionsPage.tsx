@@ -1,33 +1,13 @@
 import { useState, useEffect } from "react";
-import { CollectionsTopNav } from "@/components/collections/CollectionsTopNav";
 import { CollectionsSidebarFilters } from "@/components/collections/CollectionsSidebarFilters";
 import { ProductCard } from "@/components/collections/ProductCard";
-import { CollectionsFooter } from "@/components/collections/CollectionsFooter";
-
-interface Badge {
-  text: string;
-  variant: "primary" | "dark" | "light";
-}
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  imageAlt: string;
-  badges?: Badge[];
-  colors?: string[];
-  silhouette: string;
-  materials: string[];
-  colorways: string[];
-  releaseDate: string;
-}
+import { type Sneaker } from "@/data/models";
 
 type SortOption = "newest" | "oldest" | "price-low" | "price-high";
 
 export function CollectionsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Sneaker[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Sneaker[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [sortBy, setSortBy] = useState<SortOption>("newest");
@@ -41,7 +21,7 @@ export function CollectionsPage() {
   useEffect(() => {
     fetch("/data/sneakers.json")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: Sneaker[]) => {
         setProducts(data);
         setFilteredProducts(data);
       });
@@ -58,13 +38,13 @@ export function CollectionsPage() {
 
     if (selectedMaterials.length > 0) {
       filtered = filtered.filter((p) =>
-        p.materials.some((m) => selectedMaterials.includes(m)),
+        p.materials.some((m: string) => selectedMaterials.includes(m)),
       );
     }
 
     if (selectedColorways.length > 0) {
       filtered = filtered.filter((p) =>
-        p.colorways.some((c) => selectedColorways.includes(c)),
+        p.colorways.some((c: string) => selectedColorways.includes(c)),
       );
     }
 
@@ -182,8 +162,7 @@ export function CollectionsPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark font-display text-[#0d0d1b] dark:text-[#f8f8fc]">
-      <CollectionsTopNav />
+    <div className="relative flex w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark font-display text-[#0d0d1b] dark:text-[#f8f8fc]">
       <main className="flex flex-1 flex-col lg:flex-row px-6 lg:px-20 py-8 gap-10">
         <CollectionsSidebarFilters
           selectedSilhouettes={selectedSilhouettes}
@@ -292,6 +271,7 @@ export function CollectionsPage() {
                 price={product.price}
                 badges={product.badges}
                 colors={product.colors}
+                glb={product.glb}
               />
             ))}
           </div>
@@ -356,7 +336,6 @@ export function CollectionsPage() {
           )}
         </section>
       </main>
-      <CollectionsFooter />
     </div>
   );
 }

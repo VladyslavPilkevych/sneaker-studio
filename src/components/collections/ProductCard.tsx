@@ -1,9 +1,5 @@
 import { Link } from "react-router-dom";
-
-interface Badge {
-  text: string;
-  variant: "primary" | "dark" | "light";
-}
+import { type Badge } from "@/data/models";
 
 interface ProductCardProps {
   id: string;
@@ -13,6 +9,7 @@ interface ProductCardProps {
   price: number;
   badges?: Badge[];
   colors?: string[];
+  glb?: string | null;
 }
 
 export function ProductCard({
@@ -25,7 +22,10 @@ export function ProductCard({
   colors,
 }: ProductCardProps) {
   return (
-    <div className="card-hover group flex flex-col cursor-pointer">
+    <Link
+      to={`/product/${id}`}
+      className="card-hover group flex flex-col cursor-pointer"
+    >
       <div className="relative aspect-square overflow-hidden bg-[#f0f0f0] dark:bg-[#1a1a33] rounded-xl flex items-center justify-center p-8">
         <img
           alt={title}
@@ -51,13 +51,10 @@ export function ProductCard({
             ))}
           </div>
         )}
-        <div className="customize-btn absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 transition-all duration-300 transform translate-y-4">
-          <Link
-            to={`/model/${id}`}
-            className="bg-white text-black text-xs font-bold px-6 py-3 rounded-full shadow-2xl hover:bg-black hover:text-white transition-colors"
-          >
+        <div className="customize-btn absolute inset-0 bg-black/5 flex flex-col items-center justify-center gap-3 opacity-0 transition-all duration-300 transform translate-y-4">
+          <div className="w-[80%] bg-primary text-white text-xs font-bold px-6 py-3 rounded-full shadow-2xl hover:bg-black transition-colors text-center">
             Shop Now
-          </Link>
+          </div>
         </div>
       </div>
       <div className="mt-4 space-y-1">
@@ -83,6 +80,6 @@ export function ProductCard({
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

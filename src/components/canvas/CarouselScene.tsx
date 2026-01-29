@@ -26,17 +26,11 @@ function Model({
     (state) => state.setIsTransitioning,
   );
 
-  // Clone the scene to avoid sharing state between instances if needed
-  // Using useMemo to clone only when scene changes to be safe, though useGLTF usually caches.
   const clonedScene = useMemo(() => scene.clone(), [scene]);
 
-  // Initial state for non-active models
   useMemo(() => {
     if (!active) {
-      // Reset to hidden state immediately if not active and not involved in a transition to avoid artifacts
-      // But we want to handle entrance animation.
     }
-    // Ensure materials are transparent capable
     clonedScene.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh;
@@ -57,14 +51,12 @@ function Model({
     active ? "idle" : "exiting",
   );
 
-  // Sync internal animation state with active prop
   useEffect(() => {
     if (active) {
       setAnimState("entering");
       if (ref.current) {
-        // Reset position/scale for entrance
         ref.current.scale.set(0.8, 0.8, 0.8);
-        ref.current.rotation.y = direction * Math.PI * 0.2; // Retrieve from prop
+        ref.current.rotation.y = direction * Math.PI * 0.2;
       }
     } else {
       setAnimState((prev) =>
@@ -76,15 +68,13 @@ function Model({
   useFrame((_, delta) => {
     if (!ref.current) return;
 
-    // Standard rotation
     if (active && animState === "idle") {
-      ref.current.rotation.y += delta * 0.1; // Slow idle spin
+      ref.current.rotation.y += delta * 0.1;
     }
 
     const speed = 4 * delta;
 
     if (animState === "entering") {
-      // Fade In
       let done = true;
       clonedScene.traverse((child) => {
         if ((child as THREE.Mesh).isMesh) {
@@ -94,16 +84,9 @@ function Model({
         }
       });
 
-      // Scale Up
       ref.current.scale.lerp(new THREE.Vector3(1, 1, 1), speed);
 
-      // Rotate to center
-      // Target is rotation.y = 0 (plus some cumulative spin potentially, but let's keep it simple for now and center it)
-      // Actually for idle spin we just add to it. Let's lerp rotation.y to 0 from offset
       const currentY = ref.current.rotation.y;
-      // Damp rotation.y to roughly 0 (or some steady state).
-      // For simplicity: lerp to 0 if we want it to settle, or just let idle spin take over.
-      // Let's lerp to 0 then switch to idle.
       ref.current.rotation.y = THREE.MathUtils.lerp(currentY, 0, speed);
 
       if (
@@ -112,13 +95,11 @@ function Model({
         Math.abs(ref.current.rotation.y) < 0.05
       ) {
         setAnimState("idle");
-        // Notify store that transition is done only if we are the one entering
         if (active) setIsTransitioning(false);
       }
     }
 
     if (animState === "exiting") {
-      // Fade Out
       clonedScene.traverse((child) => {
         if ((child as THREE.Mesh).isMesh) {
           const mat = (child as THREE.Mesh).material as THREE.Material;
@@ -126,10 +107,8 @@ function Model({
         }
       });
 
-      // Rotate away slightly in opposite of entry
       ref.current.rotation.y += delta * 1 * -direction;
 
-      // Scale down slightly
       ref.current.scale.lerp(new THREE.Vector3(0.8, 0.8, 0.8), speed);
     }
   });
@@ -140,10 +119,6 @@ function Model({
 export function CarouselScene() {
   const currentIndex = useCarouselStore((state) => state.currentIndex);
   const direction = useCarouselStore((state) => state.direction);
-
-  // We render ALL models but control their visibility/state
-  // For performance with many models, we might only render curr, prev, next.
-  // Given the list is small (3 models), rendering all is fine.
 
   return (
     <div className="h-full w-full rounded-lg overflow-hidden relative">
@@ -162,7 +137,7 @@ export function CarouselScene() {
           {SNEAKER_MODELS.map((model, index) => (
             <Model
               key={model.id}
-              url={model.glbUrl}
+              url={model.glb || ""}
               active={index === currentIndex}
               direction={direction}
             />
@@ -175,9 +150,9 @@ export function CarouselScene() {
           minPolarAngle={Math.PI / 4}
           maxPolarAngle={Math.PI / 2}
         />
-        {SNEAKER_MODELS.map((model) => (
-          <Preload key={model.glbUrl} all />
-        ))}
+        {SNEAKER_MODELS.map((model) =>
+          model.glb ? <Preload key={model.glb} all /> : null,
+        )}
       </Canvas>
       <div className="absolute bottom-4 left-4 bg-white/80 dark:bg-black/80 p-2 rounded text-xs backdrop-blur-sm pointer-events-none">
         Drag to rotate • Scroll to zoom

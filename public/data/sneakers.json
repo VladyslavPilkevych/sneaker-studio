@@ -1,57 +1,126 @@
 [
   {
-    "id": "aj1-retro-high-og",
-    "name": "Air Jordan 1 Retro High OG",
-    "price": 190,
-    "image": "/assets/images/aj1-retro-high.png",
-    "imageAlt": "Modern high-top sneaker 3D render on gray",
+    "id": "sneaker-002",
+    "name": "Black Sneakers",
+    "price": 150,
+    "image": "/assets/images/black_sneakers.png",
+    "imageAlt": "3D render of Black Sneakers",
     "badges": [
-      { "text": "New Arrival", "variant": "primary" },
-      { "text": "3D Ready", "variant": "light" }
+      {
+        "text": "New",
+        "variant": "primary"
+      },
+      {
+        "text": "Customizable",
+        "variant": "dark"
+      }
     ],
-    "colors": ["bg-red-500", "bg-black", "bg-white border border-gray-200"],
-    "silhouette": "AJ1 High Retro",
-    "materials": ["Premium Leather"],
-    "colorways": ["red", "black", "white"],
-    "releaseDate": "2024-01-15"
+    "glb": "/assets/models/black_sneakers.glb",
+    "colors": [],
+    "silhouette": "Classic",
+    "materials": [
+      "Synthetic"
+    ],
+    "colorways": [],
+    "releaseDate": "2024-01-30",
+    "tags": [
+      "classic",
+      "high-top",
+      "skate"
+    ],
+    "description": "Vintage vibes with a high-top silhouette. Perfect for casual wear or the skate park."
   },
   {
-    "id": "air-max-270-react",
-    "name": "Air Max 270 React",
-    "price": 160,
-    "image": "/assets/images/air-max-270.png",
-    "imageAlt": "Sleek low-profile red performance sneaker render",
-    "badges": [{ "text": "Customizable", "variant": "dark" }],
-    "colors": ["bg-blue-400", "bg-orange-500"],
-    "silhouette": "Air Max",
-    "materials": ["Tech Mesh"],
-    "colorways": ["blue", "red"],
-    "releaseDate": "2024-01-10"
+    "id": "sneaker-001",
+    "name": "Urban Runner X",
+    "price": 150,
+    "image": "/assets/images/urban-runner.png",
+    "imageAlt": "3D render of Urban Runner X",
+    "badges": [
+      {
+        "text": "New",
+        "variant": "primary"
+      },
+      {
+        "text": "Customizable",
+        "variant": "dark"
+      }
+    ],
+    "glb": "/assets/models/urban-runner.glb",
+    "colors": [],
+    "silhouette": "Classic",
+    "materials": [
+      "Synthetic"
+    ],
+    "colorways": [],
+    "releaseDate": "2024-01-30",
+    "tags": [
+      "running",
+      "urban",
+      "modern"
+    ],
+    "description": "A sleek, modern runner designed for the concrete jungle. Features breathable mesh and responsive cushioning."
   },
   {
-    "id": "air-force-1-07-luxe",
-    "name": "Air Force 1 '07 Luxe",
-    "price": 130,
-    "image": "/assets/images/air-force-1.png",
-    "imageAlt": "Premium white leather high-top silhouette",
-    "badges": [{ "text": "Trending", "variant": "primary" }],
-    "colors": ["bg-gray-100 border border-gray-200", "bg-neutral-800"],
-    "silhouette": "Air Force 1",
-    "materials": ["Premium Leather"],
-    "colorways": ["white", "black"],
-    "releaseDate": "2024-01-20"
+    "id": "sneaker-003",
+    "name": "Future Trekker",
+    "price": 150,
+    "image": "/assets/images/future-trekker.png",
+    "imageAlt": "3D render of Future Trekker",
+    "badges": [
+      {
+        "text": "New",
+        "variant": "primary"
+      },
+      {
+        "text": "Customizable",
+        "variant": "dark"
+      }
+    ],
+    "glb": "/assets/models/future-trekker.glb",
+    "colors": [],
+    "silhouette": "Classic",
+    "materials": [
+      "Synthetic"
+    ],
+    "colorways": [],
+    "releaseDate": "2024-01-30",
+    "tags": [
+      "hiking",
+      "outdoor",
+      "futuristic"
+    ],
+    "description": "Bold design meets rugged durability. Ready for any adventure, from city streets to mountain trails."
   },
   {
-    "id": "dunk-low-varsity-green",
-    "name": "Dunk Low 'Varsity Green'",
-    "price": 110,
-    "image": "/assets/images/dunk-low.png",
-    "imageAlt": "Minimalist green and white low-top sneaker",
-    "colors": ["bg-green-800", "bg-white border border-gray-200"],
-    "silhouette": "Dunk Low SB",
-    "materials": ["Premium Leather"],
-    "colorways": ["green", "white"],
-    "releaseDate": "2024-01-05"
+    "id": "sneaker-004",
+    "name": "TEST",
+    "price": 150,
+    "image": "/assets/images/classic-court.png",
+    "imageAlt": "3D render of TEST",
+    "badges": [
+      {
+        "text": "New",
+        "variant": "primary"
+      },
+      {
+        "text": "Customizable",
+        "variant": "dark"
+      }
+    ],
+    "glb": "/models/classic-court.glb",
+    "colors": [],
+    "silhouette": "Classic",
+    "materials": [
+      "Synthetic"
+    ],
+    "colorways": [],
+    "releaseDate": "2024-01-30",
+    "tags": [
+      "TEST 1",
+      "TEST 2"
+    ],
+    "description": "TEST DESCRIPTION"
   },
   {
     "id": "aj3-patchwork",
@@ -59,23 +128,31 @@
     "price": 210,
     "image": "/assets/images/aj3-patchwork.png",
     "imageAlt": "Colorful chunky fashion sneaker 3D render",
-    "badges": [{ "text": "Limitless Edition", "variant": "light" }],
+    "badges": [
+      {
+        "text": "New",
+        "variant": "primary"
+      },
+      {
+        "text": "Limitless Edition",
+        "variant": "light"
+      }
+    ],
+    "glb": null,
+    "colors": [],
     "silhouette": "AJ3 Retro",
-    "materials": ["Hairy Suede", "Premium Leather"],
-    "colorways": ["red", "blue", "green"],
-    "releaseDate": "2024-01-25"
-  },
-  {
-    "id": "metcon-8-training",
-    "name": "Metcon 8 Training",
-    "price": 140,
-    "image": "/assets/images/metcon-8.png",
-    "imageAlt": "Stealthy all-black athletic sneaker design",
-    "colors": ["bg-zinc-900", "bg-zinc-400"],
-    "silhouette": "Training",
-    "materials": ["Tech Mesh"],
-    "colorways": ["black"],
-    "releaseDate": "2024-01-08"
+    "materials": [
+      "Hairy Suede",
+      "Premium Leather"
+    ],
+    "colorways": [
+      "red",
+      "blue",
+      "green"
+    ],
+    "releaseDate": "2024-01-25",
+    "tags": [],
+    "description": ""
   },
   {
     "id": "aj4-flight-white-cement",
@@ -83,25 +160,56 @@
     "price": 220,
     "image": "/assets/images/aj1-retro-high.png",
     "imageAlt": "Classic Jordan 4 silhouette",
-    "badges": [{ "text": "New Arrival", "variant": "primary" }],
-    "colors": ["bg-white border border-gray-200", "bg-gray-400"],
+    "badges": [
+      {
+        "text": "New Arrival",
+        "variant": "primary"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-white border border-gray-200",
+      "bg-gray-400"
+    ],
     "silhouette": "AJ4 Flight",
-    "materials": ["Premium Leather"],
-    "colorways": ["white"],
-    "releaseDate": "2024-01-22"
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "white"
+    ],
+    "releaseDate": "2024-01-22",
+    "tags": [],
+    "description": ""
   },
   {
-    "id": "dunk-low-panda",
-    "name": "Dunk Low 'Panda'",
-    "price": 115,
-    "image": "/assets/images/dunk-low.png",
-    "imageAlt": "Black and white Dunk Low",
-    "badges": [{ "text": "Trending", "variant": "primary" }],
-    "colors": ["bg-black", "bg-white border border-gray-200"],
-    "silhouette": "Dunk Low SB",
-    "materials": ["Premium Leather"],
-    "colorways": ["black", "white"],
-    "releaseDate": "2024-01-12"
+    "id": "air-force-1-07-luxe",
+    "name": "Air Force 1 '07 Luxe",
+    "price": 130,
+    "image": "/assets/images/air-force-1.png",
+    "imageAlt": "Premium white leather high-top silhouette",
+    "badges": [
+      {
+        "text": "Trending",
+        "variant": "primary"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-gray-100 border border-gray-200",
+      "bg-neutral-800"
+    ],
+    "silhouette": "Air Force 1",
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "white",
+      "black"
+    ],
+    "releaseDate": "2024-01-20",
+    "tags": [],
+    "description": ""
   },
   {
     "id": "aj1-retro-chicago",
@@ -109,24 +217,30 @@
     "price": 195,
     "image": "/assets/images/aj1-retro-high.png",
     "imageAlt": "Iconic Chicago colorway",
-    "badges": [{ "text": "3D Ready", "variant": "light" }],
-    "colors": ["bg-red-600", "bg-white border border-gray-200", "bg-black"],
+    "badges": [
+      {
+        "text": "3D Ready",
+        "variant": "light"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-red-600",
+      "bg-white border border-gray-200",
+      "bg-black"
+    ],
     "silhouette": "AJ1 High Retro",
-    "materials": ["Premium Leather"],
-    "colorways": ["red", "white", "black"],
-    "releaseDate": "2024-01-18"
-  },
-  {
-    "id": "air-max-90-infrared",
-    "name": "Air Max 90 'Infrared'",
-    "price": 145,
-    "image": "/assets/images/air-max-270.png",
-    "imageAlt": "Classic Air Max 90",
-    "colors": ["bg-white border border-gray-200", "bg-red-500"],
-    "silhouette": "Air Max",
-    "materials": ["Tech Mesh", "Premium Leather"],
-    "colorways": ["white", "red"],
-    "releaseDate": "2024-01-14"
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "red",
+      "white",
+      "black"
+    ],
+    "releaseDate": "2024-01-18",
+    "tags": [],
+    "description": ""
   },
   {
     "id": "aj3-retro-fire-red",
@@ -134,12 +248,117 @@
     "price": 205,
     "image": "/assets/images/aj3-patchwork.png",
     "imageAlt": "Fire Red Jordan 3",
-    "badges": [{ "text": "Customizable", "variant": "dark" }],
-    "colors": ["bg-white border border-gray-200", "bg-red-600"],
+    "badges": [
+      {
+        "text": "Customizable",
+        "variant": "dark"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-white border border-gray-200",
+      "bg-red-600"
+    ],
     "silhouette": "AJ3 Retro",
-    "materials": ["Premium Leather"],
-    "colorways": ["white", "red"],
-    "releaseDate": "2024-01-16"
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "white",
+      "red"
+    ],
+    "releaseDate": "2024-01-16",
+    "tags": [],
+    "description": ""
+  },
+  {
+    "id": "aj1-retro-high-og",
+    "name": "Air Jordan 1 Retro High OG",
+    "price": 190,
+    "image": "/assets/images/aj1-retro-high.png",
+    "imageAlt": "Modern high-top sneaker 3D render on gray",
+    "badges": [
+      {
+        "text": "New Arrival",
+        "variant": "primary"
+      },
+      {
+        "text": "3D Ready",
+        "variant": "light"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-red-500",
+      "bg-black",
+      "bg-white border border-gray-200"
+    ],
+    "silhouette": "AJ1 High Retro",
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "red",
+      "black",
+      "white"
+    ],
+    "releaseDate": "2024-01-15",
+    "tags": [],
+    "description": ""
+  },
+  {
+    "id": "air-max-90-infrared",
+    "name": "Air Max 90 'Infrared'",
+    "price": 145,
+    "image": "/assets/images/air-max-270.png",
+    "imageAlt": "Classic Air Max 90",
+    "badges": [],
+    "glb": null,
+    "colors": [
+      "bg-white border border-gray-200",
+      "bg-red-500"
+    ],
+    "silhouette": "Air Max",
+    "materials": [
+      "Tech Mesh",
+      "Premium Leather"
+    ],
+    "colorways": [
+      "white",
+      "red"
+    ],
+    "releaseDate": "2024-01-14",
+    "tags": [],
+    "description": ""
+  },
+  {
+    "id": "dunk-low-panda",
+    "name": "Dunk Low 'Panda'",
+    "price": 115,
+    "image": "/assets/images/dunk-low.png",
+    "imageAlt": "Black and white Dunk Low",
+    "badges": [
+      {
+        "text": "Trending",
+        "variant": "primary"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-black",
+      "bg-white border border-gray-200"
+    ],
+    "silhouette": "Dunk Low SB",
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "black",
+      "white"
+    ],
+    "releaseDate": "2024-01-12",
+    "tags": [],
+    "description": ""
   },
   {
     "id": "metcon-9-black-gold",
@@ -147,10 +366,97 @@
     "price": 155,
     "image": "/assets/images/metcon-8.png",
     "imageAlt": "Training shoe with gold accents",
-    "colors": ["bg-black", "bg-yellow-500"],
+    "badges": [],
+    "glb": null,
+    "colors": [
+      "bg-black",
+      "bg-yellow-500"
+    ],
     "silhouette": "Training",
-    "materials": ["Tech Mesh"],
-    "colorways": ["black"],
-    "releaseDate": "2024-01-11"
+    "materials": [
+      "Tech Mesh"
+    ],
+    "colorways": [
+      "black"
+    ],
+    "releaseDate": "2024-01-11",
+    "tags": [],
+    "description": ""
+  },
+  {
+    "id": "air-max-270-react",
+    "name": "Air Max 270 React",
+    "price": 160,
+    "image": "/assets/images/air-max-270.png",
+    "imageAlt": "Sleek low-profile red performance sneaker render",
+    "badges": [
+      {
+        "text": "Customizable",
+        "variant": "dark"
+      }
+    ],
+    "glb": null,
+    "colors": [
+      "bg-blue-400",
+      "bg-orange-500"
+    ],
+    "silhouette": "Air Max",
+    "materials": [
+      "Tech Mesh"
+    ],
+    "colorways": [
+      "blue",
+      "red"
+    ],
+    "releaseDate": "2024-01-10",
+    "tags": [],
+    "description": ""
+  },
+  {
+    "id": "metcon-8-training",
+    "name": "Metcon 8 Training",
+    "price": 140,
+    "image": "/assets/images/metcon-8.png",
+    "imageAlt": "Stealthy all-black athletic sneaker design",
+    "badges": [],
+    "glb": null,
+    "colors": [
+      "bg-zinc-900",
+      "bg-zinc-400"
+    ],
+    "silhouette": "Training",
+    "materials": [
+      "Tech Mesh"
+    ],
+    "colorways": [
+      "black"
+    ],
+    "releaseDate": "2024-01-08",
+    "tags": [],
+    "description": ""
+  },
+  {
+    "id": "dunk-low-varsity-green",
+    "name": "Dunk Low 'Varsity Green'",
+    "price": 110,
+    "image": "/assets/images/dunk-low.png",
+    "imageAlt": "Minimalist green and white low-top sneaker",
+    "badges": [],
+    "glb": null,
+    "colors": [
+      "bg-green-800",
+      "bg-white border border-gray-200"
+    ],
+    "silhouette": "Dunk Low SB",
+    "materials": [
+      "Premium Leather"
+    ],
+    "colorways": [
+      "green",
+      "white"
+    ],
+    "releaseDate": "2024-01-05",
+    "tags": [],
+    "description": ""
   }
 ]
