@@ -9,11 +9,11 @@ export function CheckoutPage() {
       style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
     >
       <div className="layout-container flex h-full grow flex-col">
-        <div className="gap-1 px-6 flex flex-1 flex-col justify-center py-5">
+        <div className="gap-1 px-4 md:px-6 flex flex-1 flex-col justify-center py-5">
           <div className="mb-4">
             <Breadcrumbs />
           </div>
-          <div className="flex gap-6 justify-center">
+          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center lg:items-start">
             <ShippingForm />
             <OrderSummary />
           </div>

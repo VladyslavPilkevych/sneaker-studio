@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useCartStore } from "@/store/cart-store";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useDebounce } from "@/hooks/use-debounce";
 import { SNEAKER_MODELS } from "@/data/models";
 import allSneakersData from "../../../public/data/sneakers.json";
@@ -14,6 +14,9 @@ export function Header() {
     }
     return "light";
   });
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedQuery = useDebounce(searchQuery, 300);
@@ -28,11 +31,18 @@ export function Header() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  // Merge static models and JSON data safely, avoiding duplicates if any
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const ALL_SNEAKERS = [
     ...SNEAKER_MODELS,
     ...allSneakersData.filter(
@@ -61,18 +71,20 @@ export function Header() {
         searchQuery,
       )}`;
       setShowResults(false);
+      setIsMenuOpen(false);
     }
   };
 
   return (
     <header className="w-full px-6 py-6 md:px-12 lg:px-24 flex items-center justify-between relative z-50">
-      <Link to="/" className="flex items-center gap-3">
+      <Link to="/" className="flex items-center gap-3 relative z-50">
         <div className="text-primary">
           <span className="material-symbols-outlined text-[24px]">
             Sneaked Studio
           </span>
         </div>
       </Link>
+
       <nav className="hidden md:flex items-center gap-10">
         <NavLink
           to="/collections"
@@ -105,6 +117,7 @@ export function Header() {
           Reviews
         </NavLink>
       </nav>
+
       <div className="flex items-center gap-4">
         <div className="relative hidden md:block">
           <form
@@ -214,7 +227,7 @@ export function Header() {
         </Link>
         <button
           onClick={toggleTheme}
-          className="flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#1a1a33] transition-colors"
+          className="hidden md:flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#1a1a33] transition-colors"
         >
           {theme === "light" ? (
             <Moon className="size-5 text-text-main" />
@@ -222,7 +235,112 @@ export function Header() {
             <Sun className="size-5 text-white" />
           )}
         </button>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#1a1a33] transition-colors z-50 relative"
+        >
+          {isMenuOpen ? (
+            <X className="size-6 text-text-main dark:text-white" />
+          ) : (
+            <Menu className="size-6 text-text-main dark:text-white" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-background-light dark:bg-background-dark z-40 flex flex-col pt-24 px-6 md:hidden overflow-y-auto">
+          <div className="flex flex-col gap-6">
+            {/* Mobile Search */}
+            <form onSubmit={handleSearchSubmit} className="relative">
+              <input
+                type="text"
+                placeholder="Search sneakers..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-white dark:bg-[#1a1a33] border border-gray-200 dark:border-[#2d2d4a] rounded-lg px-4 py-3 text-base outline-none focus:ring-2 focus:ring-primary/20 text-text-main dark:text-white placeholder:text-gray-400"
+              />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2"
+              >
+                <span className="material-symbols-outlined text-text-main dark:text-white">
+                  search
+                </span>
+              </button>
+            </form>
+
+            {/* Mobile Navigation */}
+            <nav className="flex flex-col gap-4">
+              <NavLink
+                to="/collections"
+                className={({ isActive }) =>
+                  `text-xl font-bold py-2 border-b border-gray-100 dark:border-[#2d2d4a] ${
+                    isActive ? "text-primary" : "text-text-main dark:text-white"
+                  }`
+                }
+              >
+                Collections
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `text-xl font-bold py-2 border-b border-gray-100 dark:border-[#2d2d4a] ${
+                    isActive ? "text-primary" : "text-text-main dark:text-white"
+                  }`
+                }
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/reviews"
+                className={({ isActive }) =>
+                  `text-xl font-bold py-2 border-b border-gray-100 dark:border-[#2d2d4a] ${
+                    isActive ? "text-primary" : "text-text-main dark:text-white"
+                  }`
+                }
+              >
+                Reviews
+              </NavLink>
+            </nav>
+
+            {/* Mobile Actions */}
+            <div className="flex items-center justify-between mt-4">
+              <Link
+                to="/cart"
+                className="flex items-center gap-2 text-text-main dark:text-white font-medium"
+              >
+                <div className="relative size-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a33]">
+                  <span className="material-symbols-outlined">
+                    shopping_cart
+                  </span>
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
+                      {totalItems}
+                    </span>
+                  )}
+                </div>
+                <span>Cart</span>
+              </Link>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-2 text-text-main dark:text-white font-medium"
+              >
+                <span>{theme === "light" ? "Dark Mode" : "Light Mode"}</span>
+                <div className="size-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-[#1a1a33]">
+                  {theme === "light" ? (
+                    <Moon className="size-5" />
+                  ) : (
+                    <Sun className="size-5" />
+                  )}
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

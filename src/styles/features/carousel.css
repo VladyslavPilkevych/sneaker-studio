@@ -18,9 +18,46 @@
   }
 
   @media (max-width: 1024px) {
+    .heroStage {
+      min-height: 1200px; /* Increased height to fit stacked content on mobile */
+    }
+
     .heroSlideGrid {
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 32px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      height: 100%;
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+
+    .heroSlideLeft,
+    .heroSlideRight {
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      padding: 0 16px;
+    }
+
+    .heroSlideCenter {
+      height: 350px;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .heroShoeWrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      top: auto;
+      left: auto;
+      transform: none;
+    }
+
+    .heroShoeShadow {
+      bottom: 20px;
+      transform: translateX(-50%) scale(0.8);
     }
   }
 
