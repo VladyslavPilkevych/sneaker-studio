@@ -7,7 +7,10 @@ const StarIcon = ({
   fill?: boolean;
   size?: string;
 }) => (
-  <div className="text-[#111318]" style={{ width: size, height: size }}>
+  <div
+    className="text-[#111318] dark:text-white"
+    style={{ width: size, height: size }}
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
@@ -27,7 +30,7 @@ const StarIcon = ({
 const RatingSummary = () => (
   <div className="flex flex-wrap gap-x-8 gap-y-6 p-4">
     <div className="flex flex-col gap-2">
-      <p className="text-[#111318] text-4xl font-black leading-tight tracking-[-0.033em]">
+      <p className="text-[#111318] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
         4.9
       </p>
       <div className="flex gap-0.5">
@@ -37,7 +40,7 @@ const RatingSummary = () => (
         <StarIcon />
         <StarIcon fill={false} />
       </div>
-      <p className="text-[#111318] text-base font-normal leading-normal">
+      <p className="text-[#111318] dark:text-gray-300 text-base font-normal leading-normal">
         1,234 reviews
       </p>
     </div>
@@ -50,12 +53,12 @@ const RatingSummary = () => (
         { star: 1, pct: 1 },
       ].map((item) => (
         <React.Fragment key={item.star}>
-          <p className="text-[#111318] text-sm font-normal leading-normal">
+          <p className="text-[#111318] dark:text-white text-sm font-normal leading-normal">
             {item.star}
           </p>
           <div className="flex h-2 flex-1 overflow-hidden rounded-full bg-[#dbdfe6]">
             <div
-              className="rounded-full bg-[#111318]"
+              className="rounded-full bg-[#111318] dark:bg-white"
               style={{ width: `${item.pct}%` }}
             ></div>
           </div>
@@ -71,19 +74,24 @@ const RatingSummary = () => (
 const RatingBar = ({ label, width }: { label: string; width: string }) => (
   <div className="flex flex-col gap-3 p-4">
     <div className="flex gap-6 justify-between">
-      <p className="text-[#111318] text-base font-medium leading-normal">
+      <p className="text-[#111318] dark:text-white text-base font-medium leading-normal">
         {label}
       </p>
     </div>
     <div className="rounded bg-[#dbdfe6]">
-      <div className="h-2 rounded bg-[#111318]" style={{ width }}></div>
+      <div
+        className="h-2 rounded bg-[#111318] dark:bg-white"
+        style={{ width }}
+      ></div>
     </div>
   </div>
 );
 
 const FilterChip = ({ label }: { label: string }) => (
   <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f4] pl-4 pr-4">
-    <p className="text-[#111318] text-sm font-medium leading-normal">{label}</p>
+    <p className="text-[#111318] dark:text-black text-sm font-medium leading-normal">
+      {label}
+    </p>
   </div>
 );
 
@@ -94,10 +102,10 @@ const PhotoReview = ({ image, name }: { image: string; name: string }) => (
       style={{ backgroundImage: `url("${image}")` }}
     ></div>
     <div>
-      <p className="text-[#111318] text-base font-medium leading-normal">
+      <p className="text-[#111318] dark:text-white text-base font-medium leading-normal">
         {name}
       </p>
-      <p className="text-[#616f89] text-sm font-normal leading-normal">
+      <p className="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal">
         Verified Purchase
       </p>
     </div>
@@ -180,7 +188,7 @@ const ReviewCard = ({
 export const ReviewPage = () => {
   return (
     <div
-      className="relative flex w-full flex-col bg-white group/design-root overflow-x-hidden"
+      className="relative flex w-full flex-col bg-white dark:bg-background-dark dark:text-white group/design-root overflow-x-hidden"
       style={{ fontFamily: 'Manrope, "Noto Sans", sans-serif' }}
     >
       <div className="layout-container flex h-full grow flex-col">
@@ -188,10 +196,10 @@ export const ReviewPage = () => {
           <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div className="flex flex-wrap justify-between gap-3 p-4">
               <div className="flex min-w-72 flex-col gap-3">
-                <p className="text-[#111318] tracking-light text-[32px] font-bold leading-tight">
+                <p className="text-[#111318] dark:text-white tracking-light text-[32px] font-bold leading-tight">
                   Customer Stories &amp; Reviews
                 </p>
-                <p className="text-[#616f89] text-sm font-normal leading-normal">
+                <p className="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal">
                   See what our customers are saying about their custom sneaker
                   experience.
                 </p>
@@ -210,7 +218,7 @@ export const ReviewPage = () => {
               </button>
             </div>
 
-            <h2 className="text-[#111318] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+            <h2 className="text-[#111318] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
               Customer Reviews
             </h2>
 
@@ -247,7 +255,7 @@ export const ReviewPage = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-8 overflow-x-hidden bg-white p-4">
+            <div className="flex flex-col gap-8 overflow-x-hidden bg-white dark:bg-background-dark p-4">
               <ReviewCard
                 avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuCze_FWSG87xvb6xbj4EgYjNw3DFT7QFlC3u_8MvOpxoB3qO4NoHSy9ofiZdny5bvLE8NSD8KaFIL-NhrOEZfF7chv056WstgWwJckREiYzj0VeNySoyleTpba_8W5GNz-9ExvnkVurd-v1MnW7Fp-Dn4iF-zVtK4c9_ROYo50bf-AaD6ibLrLVGhUHzOZd8Y4u1WR0nF0QX-i8vX2EtTtpWl251e48vZUgd1s87kiqIQHPlKi91MYwLaIy6GulD_FiRBwupjgmnps"
                 name="Sarah M."

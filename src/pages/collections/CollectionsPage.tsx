@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import Fuse from "fuse.js";
+import { useSearchParams } from "react-router-dom";
 import { CollectionsSidebarFilters } from "@/components/collections/CollectionsSidebarFilters";
 import { ProductCard } from "@/components/collections/ProductCard";
 import { type Sneaker } from "@/data/models";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 type SortOption = "newest" | "oldest" | "price-low" | "price-high";
 
@@ -9,14 +12,36 @@ export function CollectionsPage() {
   const [products, setProducts] = useState<Sneaker[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Sneaker[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
-  const [sortBy, setSortBy] = useState<SortOption>("newest");
+  const [itemsPerPage, setItemsPerPage] = useState(() => {
+    if (typeof window !== "undefined") {
+      return Number(localStorage.getItem("itemsPerPage")) || 6;
+    }
+    return 6;
+  });
+  const [sortBy, setSortBy] = useState<SortOption>(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("sortBy") as SortOption) || "newest";
+    }
+    return "newest";
+  });
   const [showSortDropdown, setShowSortDropdown] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlSearchQuery = searchParams.get("search") || "";
 
   const [selectedSilhouettes, setSelectedSilhouettes] = useState<string[]>([]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
   const [selectedColorways, setSelectedColorways] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([100, 500]);
+
+  useEffect(() => {
+    if (urlSearchQuery) {
+      setSearchQuery(urlSearchQuery);
+      setShowSearch(true);
+    }
+  }, [urlSearchQuery]);
 
   useEffect(() => {
     fetch("/data/sneakers.json")
@@ -29,6 +54,15 @@ export function CollectionsPage() {
 
   useEffect(() => {
     let filtered = [...products];
+
+    if (searchQuery) {
+      const fuse = new Fuse(filtered, {
+        keys: ["name", "description", "tags", "silhouette", "colorways"],
+        threshold: 0.4,
+      });
+      const result = fuse.search(searchQuery);
+      filtered = result.map((r) => r.item);
+    }
 
     if (selectedSilhouettes.length > 0) {
       filtered = filtered.filter((p) =>
@@ -84,7 +118,16 @@ export function CollectionsPage() {
     selectedColorways,
     priceRange,
     sortBy,
+    searchQuery,
   ]);
+
+  useEffect(() => {
+    localStorage.setItem("itemsPerPage", String(itemsPerPage));
+  }, [itemsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem("sortBy", sortBy);
+  }, [sortBy]);
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -124,6 +167,13 @@ export function CollectionsPage() {
     setSelectedMaterials([]);
     setSelectedColorways([]);
     setPriceRange([100, 500]);
+    setSearchQuery("");
+    setSearchParams({});
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchParams(searchQuery ? { search: searchQuery } : {});
   };
 
   const getSortLabel = () => {
@@ -178,15 +228,7 @@ export function CollectionsPage() {
         <section className="flex-1">
           <div className="flex flex-col sm:flex-row justify-between items-end gap-4 mb-10 pb-6 border-b border-[#e7e7f3] dark:border-[#2d2d4a]">
             <div className="flex flex-col gap-1">
-              <nav className="flex items-center gap-2 text-xs text-[#4c4c9a] font-medium mb-2 uppercase tracking-tighter">
-                <span>Home</span>
-                <span className="material-symbols-outlined text-[12px]">
-                  chevron_right
-                </span>
-                <span className="text-[#0d0d1b] dark:text-white">
-                  Collections
-                </span>
-              </nav>
+              <Breadcrumbs />
               <h1 className="text-4xl font-black tracking-tight">
                 Sneaker Collections
               </h1>
@@ -195,6 +237,41 @@ export function CollectionsPage() {
               </p>
             </div>
             <div className="flex items-center gap-3">
+              {showSearch ? (
+                <form
+                  onSubmit={handleSearch}
+                  className="relative flex items-center"
+                >
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search..."
+                    className="pl-4 pr-10 py-2 w-64 bg-white dark:bg-[#1a1a33] border border-[#e7e7f3] dark:border-[#2d2d4a] rounded-lg text-sm outline-none focus:border-primary transition-colors"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowSearch(false);
+                      setSearchQuery("");
+                      setSearchParams({});
+                    }}
+                    className="absolute right-2 text-[#4c4c9a] hover:text-red-500"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">
+                      close
+                    </span>
+                  </button>
+                </form>
+              ) : (
+                <button
+                  onClick={() => setShowSearch(true)}
+                  className="flex size-10 items-center justify-center rounded-lg bg-white dark:bg-[#1a1a33] border border-[#e7e7f3] dark:border-[#2d2d4a] text-text-main hover:bg-gray-100 dark:hover:bg-[#2d2d4a] transition-colors"
+                >
+                  <span className="material-symbols-outlined">search</span>
+                </button>
+              )}
               <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1a1a33] border border-[#e7e7f3] dark:border-[#2d2d4a] rounded-lg text-sm font-semibold">
                 <span>Show:</span>
                 <select

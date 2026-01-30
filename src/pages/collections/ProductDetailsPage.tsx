@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import {
-  ShoppingCart,
-  Edit3,
-  ArrowLeft,
-  Star,
-  Shield,
-  Truck,
-} from "lucide-react";
+import { ShoppingCart, Edit3, Star, Shield, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type Sneaker } from "@/data/models";
 import { useCartStore } from "@/store/cart-store";
 import { Seo } from "@/components/Seo";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { toast } from "react-toastify";
 
 const SIZES = ["US 7", "US 8", "US 9", "US 10", "US 11", "US 12", "US 13"];
 
@@ -44,6 +39,7 @@ export function ProductDetailsPage() {
       addItem({
         ...sneaker,
       });
+      toast.success("Added to cart");
     }
   };
 
@@ -77,13 +73,9 @@ export function ProductDetailsPage() {
       />
 
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-        <Link
-          to="/collections"
-          className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Collections
-        </Link>
+        <div className="mb-8">
+          <Breadcrumbs />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div className="relative aspect-square rounded-3xl bg-[#f8f8f8] dark:bg-[#1a1a33] overflow-hidden group">

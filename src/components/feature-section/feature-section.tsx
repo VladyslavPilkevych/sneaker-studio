@@ -1,6 +1,6 @@
 export function FeatureSection() {
   return (
-    <section className="w-full bg-white py-20 px-6 md:px-12 lg:px-24 border-t border-gray-100">
+    <section className="w-full bg-surface-light dark:bg-background-dark py-20 px-6 md:px-12 lg:px-24 border-t border-gray-100 dark:border-[#2d2d4a]">
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-2xl">

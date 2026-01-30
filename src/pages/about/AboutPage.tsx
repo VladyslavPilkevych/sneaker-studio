@@ -16,13 +16,13 @@ const AboutHero: React.FC = () => (
 
 const AboutVision: React.FC = () => (
   <>
-    <h1 className="text-[#181112] tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">
+    <h1 className="text-[#181112] dark:text-white tracking-light text-[32px] font-bold leading-tight px-4 text-center pb-3 pt-6">
       The Art of Customization
     </h1>
-    <h2 className="text-[#181112] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+    <h2 className="text-[#181112] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
       Our Vision
     </h2>
-    <p className="text-[#181112] text-base font-normal leading-normal pb-3 pt-1 px-4">
+    <p className="text-[#181112] dark:text-gray-300 text-base font-normal leading-normal pb-3 pt-1 px-4">
       At SneakerLab, we envision a future where technology and street culture
       converge. Our mission is to empower individuals to express their unique
       style through personalized 3D sneaker designs. We believe in the power of
@@ -47,12 +47,12 @@ const AboutVision: React.FC = () => (
 
 const AboutJourney: React.FC = () => (
   <>
-    <h2 className="text-[#181112] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+    <h2 className="text-[#181112] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
       Our Journey
     </h2>
     <div className="grid grid-cols-[40px_1fr] gap-x-2 px-4">
       <div className="flex flex-col items-center gap-1 pt-3">
-        <div className="text-[#181112]">
+        <div className="text-[#181112] dark:text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24px"
@@ -66,17 +66,17 @@ const AboutJourney: React.FC = () => (
         <div className="w-[1.5px] bg-[#e6dbdd] h-2 grow" />
       </div>
       <div className="flex flex-1 flex-col py-3">
-        <p className="text-[#181112] text-base font-medium leading-normal">
+        <p className="text-[#181112] dark:text-white text-base font-medium leading-normal">
           2018: The Idea
         </p>
-        <p className="text-[#896168] text-base font-normal leading-normal">
+        <p className="text-[#896168] dark:text-gray-400 text-base font-normal leading-normal">
           The concept of merging 3D technology with sneaker customization was
           born.
         </p>
       </div>
       <div className="flex flex-col items-center gap-1">
         <div className="w-[1.5px] bg-[#e6dbdd] h-2" />
-        <div className="text-[#181112]">
+        <div className="text-[#181112] dark:text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24px"
@@ -99,7 +99,7 @@ const AboutJourney: React.FC = () => (
       </div>
       <div className="flex flex-col items-center gap-1 pb-3">
         <div className="w-[1.5px] bg-[#e6dbdd] h-2" />
-        <div className="text-[#181112]">
+        <div className="text-[#181112] dark:text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24px"
@@ -126,7 +126,7 @@ const AboutJourney: React.FC = () => (
 export const AboutPage: React.FC = () => {
   return (
     <div
-      className="relative flex w-full flex-col bg-white overflow-x-hidden"
+      className="relative flex w-full flex-col bg-white dark:bg-background-dark dark:text-white overflow-x-hidden"
       style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}
     >
       <div className="layout-container flex h-full grow flex-col">

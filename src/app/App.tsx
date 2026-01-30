@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Header } from "@/components/header/Header";
 import { HomePage } from "@/pages/HomePage";
 import { SneakerPage } from "@/pages/SneakerPage";
@@ -27,6 +29,7 @@ function AppLayout() {
         <Outlet />
       </main>
       <Footer />
+      <ToastContainer position="bottom-right" theme="dark" />
     </div>
   );
 }

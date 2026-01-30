@@ -11,7 +11,7 @@ export default {
                 "primary": "#0f0fbd",
                 "primary-dark": "#0e45b8",
                 "background-light": "#f6f6f8",
-                "background-dark": "#101022",
+                "background-dark": "#09090b",
                 "surface-light": "#ffffff",
                 "text-main": "#0d0d1b",
                 "text-muted": "#4c4c9a",
