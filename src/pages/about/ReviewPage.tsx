@@ -212,11 +212,11 @@ export const ReviewPage = () => {
             <RatingBar label="Customization Detail" width="98%" />
             <RatingBar label="Shipping" width="92%" />
 
-            <div className="flex px-4 py-3 justify-end">
+            {/* <div className="flex px-4 py-3 justify-end">
               <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#135bec] text-white text-sm font-bold leading-normal tracking-[0.015em]">
                 <span className="truncate">Write a Review</span>
               </button>
-            </div>
+            </div> */}
 
             <h2 className="text-[#111318] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
               Customer Reviews

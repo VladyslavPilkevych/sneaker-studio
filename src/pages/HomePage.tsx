@@ -6,6 +6,7 @@ import { Seo } from "../components/Seo";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { FeatureSection } from "@/components/feature-section/feature-section";
 import { ScrollModelStory } from "@/components/ScrollModelStory";
+import { ModelStoryFooter } from "@/components/ModelStoryFooter";
 
 export function HomePage() {
   const currentIndex = useCarouselStore((state) => state.currentIndex);
@@ -44,9 +45,10 @@ export function HomePage() {
 
       <FeatureSection />
 
+      {/* <ModelStoryStatic /> */}
       <ScrollModelStory url="/assets/models/nike_air_force_1.glb" />
 
-      <FeatureSection />
+      <ModelStoryFooter />
     </>
   );
 }

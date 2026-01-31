@@ -236,7 +236,6 @@ export function Header() {
           )}
         </button>
 
-        {/* Mobile Toggle */}
         <button
           onClick={toggleMenu}
           className="md:hidden flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#1a1a33] transition-colors z-50 relative"
@@ -249,11 +248,9 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-background-light dark:bg-background-dark z-40 flex flex-col pt-24 px-6 md:hidden overflow-y-auto">
           <div className="flex flex-col gap-6">
-            {/* Mobile Search */}
             <form onSubmit={handleSearchSubmit} className="relative">
               <input
                 type="text"
@@ -272,7 +269,6 @@ export function Header() {
               </button>
             </form>
 
-            {/* Mobile Navigation */}
             <nav className="flex flex-col gap-4">
               <NavLink
                 to="/collections"
@@ -306,7 +302,6 @@ export function Header() {
               </NavLink>
             </nav>
 
-            {/* Mobile Actions */}
             <div className="flex items-center justify-between mt-4">
               <Link
                 to="/cart"

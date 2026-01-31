@@ -73,7 +73,6 @@ export function HeroCarousel({
     }, 560);
 
     return () => {
-      // window.cancelAnimationFrame(r);
       window.cancelAnimationFrame(r1);
       window.cancelAnimationFrame(r2);
       window.clearTimeout(t);
@@ -172,7 +171,7 @@ function SlideContent({
             className="size-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-white hover:shadow-lg transition-all group bg-transparent"
           >
             <span className="material-symbols-outlined text-text-muted group-hover:text-text-main">
-              ←
+              arrow_back
             </span>
           </button>
 
@@ -182,7 +181,7 @@ function SlideContent({
             className="size-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-white hover:shadow-lg transition-all group bg-transparent"
           >
             <span className="material-symbols-outlined text-text-muted group-hover:text-text-main">
-              →
+              arrow_forward
             </span>
           </button>
         </div>
@@ -239,7 +238,7 @@ function SlideContent({
             >
               Shop now
               <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">
-                →
+                arrow_forward
               </span>
             </button>
           </div>
