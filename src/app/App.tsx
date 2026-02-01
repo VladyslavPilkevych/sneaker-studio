@@ -2,18 +2,18 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Header } from "@/components/header/Header";
-import { HomePage } from "@/pages/HomePage";
-import { SneakerPage } from "@/pages/SneakerPage";
 import { CollectionsPage } from "@/pages/collections/CollectionsPage";
-import { ProductDetailsPage } from "@/pages/collections/ProductDetailsPage";
 import { CheckoutPage } from "@/pages/checkout/CheckoutPage";
 import CartPage from "@/pages/cart/CartPage";
 import { AboutPage } from "@/pages/about/AboutPage";
-import ReviewPage from "@/pages/about/ReviewPage";
 import { Footer } from "@/components/footer/footer";
+import ReviewPage from "@/pages/reviews/ReviewPage";
 
 import { useGLTF } from "@react-three/drei";
 import { SNEAKER_MODELS } from "@/data/models";
+import { ProductDetailsPage } from "@/pages/product/ProductDetailsPage";
+import { SneakerPage } from "@/pages/model/SneakerPage";
+import { HomePage } from "@/pages/home/HomePage";
 
 SNEAKER_MODELS.forEach((model) => {
   if (model.glb) {

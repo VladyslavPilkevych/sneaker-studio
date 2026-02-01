@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Sneaker } from "../data/models";
+import type { Sneaker } from "../../data/models";
 import { ModelViewer } from "./ModelViewer";
 import { useCarouselStore } from "@/store/carousel-store";
 

@@ -3,9 +3,7 @@ import { PaymentSection } from "./PaymentSection";
 export function ShippingForm() {
   return (
     <div className="layout-content-container flex flex-col max-w-[920px] flex-1">
-      <div className="flex flex-wrap gap-2 p-4">
-        {/* Breadcrumbs can replace this manual nav if decided, but keeping as is for now, just styling */}
-      </div>
+      {/* <div className="flex flex-wrap gap-2 p-4">Breadcrumbs</div> */}
       <h2 className="text-[#0d0d1b] dark:text-white tracking-light text-[28px] font-bold leading-tight px-4 text-left pb-3 pt-5">
         Payment &amp; Shipping
       </h2>

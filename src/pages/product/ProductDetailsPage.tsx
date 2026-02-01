@@ -4,7 +4,7 @@ import { ShoppingCart, Edit3, Star, Shield, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type Sneaker } from "@/data/models";
 import { useCartStore } from "@/store/cart-store";
-import { Seo } from "@/components/Seo";
+import { Seo } from "@/components/ui/Seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { toast } from "react-toastify";
 

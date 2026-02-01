@@ -1,19 +1,19 @@
 import { useState, useEffect, Suspense } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { RefreshCw, ShoppingCart, Plus } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { useCartStore } from "../store/cart-store";
-import { Separator } from "../components/ui/separator";
+import { Button } from "../../components/ui/button";
+import { useCartStore } from "../../store/cart-store";
+import { Separator } from "../../components/ui/separator";
 import { toast } from "react-toastify";
-import { CustomizerScene } from "../components/canvas/CustomizerScene";
-import { useCustomizerStore } from "../store/customizer-store";
-import { SNEAKER_MODELS } from "../data/models";
-import allSneakersData from "../../public/data/sneakers.json";
-import { Seo } from "../components/Seo";
-import { Loader } from "../components/canvas/Loader";
-import { CanvasErrorBoundary } from "../components/3d/CanvasErrorBoundary";
-import { Skeleton } from "../components/ui/skeleton";
-import { Breadcrumbs } from "../components/ui/Breadcrumbs";
+import { CustomizerScene } from "../../components/canvas/CustomizerScene";
+import { useCustomizerStore } from "../../store/customizer-store";
+import { SNEAKER_MODELS } from "../../data/models";
+import allSneakersData from "../../../public/data/sneakers.json";
+import { Seo } from "../../components/ui/Seo";
+import { Loader } from "../../components/canvas/Loader";
+import { CanvasErrorBoundary } from "../../components/3d/CanvasErrorBoundary";
+import { Skeleton } from "../../components/ui/skeleton";
+import { Breadcrumbs } from "../../components/ui/Breadcrumbs";
 
 const PRESET_COLORS = [
   "#ffffff",
@@ -74,7 +74,6 @@ export function SneakerPage() {
     }
   }, [currentModel, initModel]);
 
-  // Sync state to URL
   useEffect(() => {
     if (currentModel && Object.keys(partColors).length > 0) {
       const configString = JSON.stringify(partColors);

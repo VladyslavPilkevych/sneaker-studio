@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, type ThreeEvent } from "@react-three/fiber";
 import { Environment, OrbitControls, useGLTF, Center } from "@react-three/drei";
 import * as THREE from "three";
 import { useCustomizerStore } from "../../store/customizer-store";
 
-// Clean InteractiveModel component that handles coloring and selection
 function InteractiveModel({ url }: { url: string }) {
   const { scene } = useGLTF(url);
   const { partColors, selectPart, selectedPart, setAvailableParts } =
     useCustomizerStore();
 
-  // Clone scene so we don't mess up other views
   const [clonedScene] = useState(() => scene.clone());
 
-  // Discover parts on mount
   useEffect(() => {
     const parts: string[] = [];
     clonedScene.traverse((child) => {
@@ -31,19 +28,13 @@ function InteractiveModel({ url }: { url: string }) {
         const color = partColors[mesh.name];
 
         if (color) {
-          // Check if material is standard and apply color
-          // We assume standard material for simplicity
           if ((mesh.material as THREE.MeshStandardMaterial).color) {
             (mesh.material as THREE.MeshStandardMaterial).color.set(color);
           }
         }
 
-        // Highlight logic
         const isSelected = mesh.name === selectedPart;
 
-        // We use emissive for highlighting.
-        // Note: Ideally we should save the original emissive state, but for a sneaker viewer,
-        // usually meshes don't have emissive unless they are lights.
         if (isSelected) {
           if ((mesh.material as THREE.MeshStandardMaterial).emissive) {
             (mesh.material as THREE.MeshStandardMaterial).emissive.set(
@@ -67,7 +58,7 @@ function InteractiveModel({ url }: { url: string }) {
   return (
     <primitive
       object={clonedScene}
-      onClick={(e: any) => {
+      onClick={(e: ThreeEvent<MouseEvent>) => {
         e.stopPropagation();
         selectPart(e.object.name);
       }}

@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCarouselStore } from "../store/carousel-store";
-import { SNEAKER_MODELS } from "../data/models";
-import { Seo } from "../components/Seo";
-import { HeroCarousel } from "@/components/HeroCarousel";
+import { useCarouselStore } from "../../store/carousel-store";
+import { SNEAKER_MODELS } from "../../data/models";
+import { Seo } from "../../components/ui/Seo";
+import { HeroCarousel } from "@/features/carousel/HeroCarousel";
 import { FeatureSection } from "@/components/feature-section/feature-section";
-import { ScrollModelStory } from "@/components/ScrollModelStory";
-import { ModelStoryFooter } from "@/components/ModelStoryFooter";
+import { ScrollModelStory } from "@/features/scroll-story/ScrollModelStory";
 
 export function HomePage() {
   const currentIndex = useCarouselStore((state) => state.currentIndex);
@@ -45,10 +44,7 @@ export function HomePage() {
 
       <FeatureSection />
 
-      {/* <ModelStoryStatic /> */}
       <ScrollModelStory url="/assets/models/nike_air_force_1.glb" />
-
-      <ModelStoryFooter />
     </>
   );
 }
