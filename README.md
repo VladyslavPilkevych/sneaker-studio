@@ -2,11 +2,11 @@
 
 A premium 3D sneaker customization experience built with React, Three.js (R3F), and Tailwind CSS.
 
-![Sneaker Studio Banner](/public/banner.png)
+![Sneaker Studio Banner](/docs/banner.png)
 
 ## Demo Video
 
-![Project Demo](file:///Users/vladyslavpilkevych/Documents/GitHub/sneaker-studio/docs/demo.mp4)
+![Project Demo](/docs/demo.mp4)
 
 ---
 
