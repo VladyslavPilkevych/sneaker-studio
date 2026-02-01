@@ -12,13 +12,13 @@ export function FeatureSection() {
               fingertips.
             </p>
           </div>
-          <a
+          {/* <a
             href="#"
             className="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"
           >
             View full feature list{" "}
             <span className="material-symbols-outlined text-lg">→</span>
-          </a>
+          </a> */}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="group p-8 rounded-2xl bg-background-light hover:bg-white border border-transparent hover:border-gray-100 hover:shadow-soft transition-all duration-300">

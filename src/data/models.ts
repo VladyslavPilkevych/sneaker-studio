@@ -28,7 +28,7 @@ export const SNEAKER_MODELS: Sneaker[] = [
     description:
       "Vintage vibes with a high-top silhouette. Perfect for casual wear or the skate park.",
     price: 150,
-    image: "/assets/images/black_sneakers.png",
+    image: "/assets/images/black-sneakers.png",
     imageAlt: "3D render of Black Sneakers",
     badges: [
       { text: "New", variant: "primary" },
@@ -91,28 +91,6 @@ export const SNEAKER_MODELS: Sneaker[] = [
     colorways: [],
     releaseDate: "2024-01-30",
     tags: ["hiking", "outdoor", "futuristic"],
-    defaultConfig: {
-      laces: "#ffff00",
-      sole: "#222222",
-      body: "#4444ff",
-    },
-  },
-  {
-    id: "sneaker-004",
-    name: "Classic Court",
-    description:
-      "Timeless court silhouette with modern comfort and durability.",
-    price: 150,
-    image: "/assets/images/classic-court.png",
-    imageAlt: "3D render of Classic Court",
-    badges: [{ text: "Customizable", variant: "dark" }],
-    glb: "/models/classic-court.glb",
-    colors: [],
-    silhouette: "Classic",
-    materials: ["Synthetic"],
-    colorways: [],
-    releaseDate: "2024-01-30",
-    tags: ["classic", "court"],
     defaultConfig: {
       laces: "#ffff00",
       sole: "#222222",

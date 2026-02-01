@@ -41,7 +41,7 @@ export function HeroOverlay({ progress }: { progress: number }) {
         display: "grid",
         placeItems: "center",
         alignContent: "start",
-        // paddingTop: "140px",
+        marginTop: "-180px",
       }}
       className="xl:pt-24"
     >
