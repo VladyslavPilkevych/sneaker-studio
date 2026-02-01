@@ -6,7 +6,7 @@ A premium 3D sneaker customization experience built with React, Three.js (R3F), 
 
 ## Demo Video
 
-https://raw.githubusercontent.com/VladyslavPilkevych/sneaker-studio/main/docs/demo.mp4
+<video src="./docs/demo.mp4" controls></video>
 
 ---
 
