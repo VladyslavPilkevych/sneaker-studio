@@ -4,11 +4,11 @@ A premium 3D sneaker customization experience built with React, Three.js (R3F), 
 
 ![Sneaker Studio Banner](/docs/banner.png)
 
-## Demo Video
+<!-- ## Demo Video
 
 <video src="./docs/demo.mp4" controls></video>
 
----
+--- -->
 
 ## 1. Introduction
 
@@ -134,3 +134,11 @@ The project uses a centralized JSON file for the sneaker catalog and a TypeScrip
 ## 7. License
 
 This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+
+---
+
+## Credits & Attribution
+
+This project uses third-party 3D models licensed under Creative Commons Attribution (CC BY 4.0).
+
+See [CREDITS.md](./CREDITS.md) for full attribution details.
